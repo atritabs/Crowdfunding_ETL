@@ -40,6 +40,19 @@ CREATE TABLE "category" (
      )
 );
 
+CREATE TABLE "contacts" (
+    "contact_id" INTEGER   NOT NULL,
+    "first_name" VARCHAR(50)   NOT NULL,
+    "last_name" VARCHAR(50)   NOT NULL,
+    "email" VARCHAR(100)   NOT NULL,
+    CONSTRAINT "pk_contacts" PRIMARY KEY (
+        "contact_id"
+     )
+);
+
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_contact_id" FOREIGN KEY("contact_id")
+REFERENCES "contacts" ("contact_id");
+
 ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_category_id" FOREIGN KEY("category_id")
 REFERENCES "category" ("category_id");
 
